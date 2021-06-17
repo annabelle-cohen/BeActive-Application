@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relLayo"
+    android:background="@color/black"
+    tools:context=".BeActiveSecondActivity">
+
+<ImageView
+    android:layout_width="500dp"
+    android:layout_height="wrap_content"
+    android:src="@drawable/app_logo"
+    android:translationY="30dp"
+    android:translationX="5dp">
+
+</ImageView>
+
+<ImageView
+    android:id="@+id/progresbar"
+    android:layout_width="400dp"
+    android:layout_height="400dp"
+   android:src="@drawable/blue_ring"
+   android:layout_centerInParent="true"
+   >
+
+</ImageView>
+
+    <ImageView
+        android:id="@+id/female_walking"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/walking_female_00"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:translationY="100dp"
+        >
+
+    </ImageView>
+
+<TextView
+    android:id="@+id/text_progress_steps"
+    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+    android:text="Steps"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:textColor="@color/white"
+    android:textSize="50dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+</TextView>
+
+    <TextView
+        android:id="@+id/text_progress_"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="Steps"
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:translationY="40dp"
+        android:textColor="@color/gray"
+        android:textSize="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+ <LinearLayout
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal"
+     android:layout_alignParentBottom="true"
+     android:layout_centerInParent="true"
+     android:translationY="-50dp">
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        app:tint="@color/white"
+        android:src="@drawable/metabolism"
+        android:translationX="5dp"
+        android:background="@drawable/rounded_button">
+    </ImageView>
+
+     <ImageView
+         android:layout_width="70dp"
+         android:layout_height="70dp"
+         app:tint="@color/white"
+         android:src="@drawable/kilometer"
+         android:background="@drawable/rounded_button"
+         android:layout_marginLeft="100dp"
+         android:layout_marginRight="20dp"
+         android:translationX="20dp"
+   >
+     </ImageView>
+
+ </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:translationY="20dp">
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            app:tint="@color/white"
+            android:src="@drawable/blue_ring"
+            android:translationX="-5dp"
+            android:translationY="-5dp"
+          >
+        </ImageView>
+
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            app:tint="@color/white"
+            android:src="@drawable/blue_ring"
+            android:translationX="-10dp"
+            android:translationY="-5dp"
+            >
+        </ImageView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:translationY="-30dp">
+        <TextView
+            android:id="@+id/calories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calories"
+            android:translationX="11dp"
+            android:translationY="-5dp"
+            android:textColor="@color/white">
+
+        </TextView>
+        <TextView
+            android:id="@+id/kilometers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kilometer"
+            android:textColor="@color/white"
+            android:translationY="-5dp"
+            android:layout_marginLeft="145dp">
+
+        </TextView>
+    </LinearLayout>
+
+</RelativeLayout>
