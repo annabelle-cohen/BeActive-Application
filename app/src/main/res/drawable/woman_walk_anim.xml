@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
+    <item android:drawable="@drawable/walking_female_00" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_01" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_02" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_03" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_04" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_05" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_06" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_07" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_08" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_09" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_10" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_11" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_12" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_13" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_14" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_15" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_16" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_17" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_18" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_19" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_20" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_21" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_22" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_23" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_24" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_25" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_26" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_27" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_28" android:duration="80"/>
+    <item android:drawable="@drawable/walking_female_29" android:duration="80"/>
+</animation-list>

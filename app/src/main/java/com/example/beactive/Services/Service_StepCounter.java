@@ -24,6 +24,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.example.beactive.BeActiveMainActivity;
+import com.example.beactive.Calculation.Calculation;
 import com.example.beactive.R;
 
 public class Service_StepCounter extends Service implements SensorEventListener {
@@ -43,6 +44,7 @@ public class Service_StepCounter extends Service implements SensorEventListener 
     private SensorManager sensorManager;
     private Sensor sensor;
     private int stepCounter = 0;
+    private Calculation calculation;
 
 
 
@@ -105,7 +107,7 @@ public class Service_StepCounter extends Service implements SensorEventListener 
                 .setOngoing(true)
                 .setSmallIcon(R.drawable.ic_baseline_directions_run_24)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher_round))
-                .setContentTitle("Steps:"+stepCounter)
+                .setContentTitle("Steps:"+stepCounter+"Calories: "+calculation.getCaloriesAccordingSteps()+"Kilometers: "+calculation.getKilometersAccordingSteps())
                 .setContentText("--");
 
         Notification notification = notificationBuilder.build();
@@ -131,7 +133,7 @@ public class Service_StepCounter extends Service implements SensorEventListener 
                 .setOngoing(true)
                 .setSmallIcon(R.drawable.ic_baseline_directions_run_24)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher_round))
-                .setContentTitle("Steps:"+stepCounter)
+                .setContentTitle("Steps:"+stepCounter+"Calories: "+calculation.getCaloriesAccordingSteps()+"Kilometers: "+calculation.getKilometersAccordingSteps())
                 .setContentText("--");
 
         Notification notification = notificationBuilder.build();
@@ -198,6 +200,7 @@ public class Service_StepCounter extends Service implements SensorEventListener 
 
         if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)!=null){
             sensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
+            calculation = new Calculation(0,0);
             isSensorPresent=true;
              registerListener();
 
@@ -212,9 +215,13 @@ public class Service_StepCounter extends Service implements SensorEventListener 
         if(sensorEvent.sensor == sensor){
             if(isFixation){
                 stepCounter = (int) sensorEvent.values[0];
+                calculation.calculateCalories(stepCounter);
+                calculation.calculateKilometers(stepCounter);
                 isFixation=false;
             }else{
                 stepCounter++;
+                calculation.calculateCalories(stepCounter);
+                calculation.calculateKilometers(stepCounter);
                 Log.e("step count: ",stepCounter+" ");
                 editNotification();
             }

@@ -11,4 +11,7 @@
     <style name="SplashScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/be_active_background</item>
     </style>
+
+    <style name="HideActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
 </resources>

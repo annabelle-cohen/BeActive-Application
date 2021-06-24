@@ -32,8 +32,8 @@
         android:id="@+id/female_walking"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/walking_female_00"
-        android:layout_marginTop="80dp"
+        android:background="@drawable/woman_walk_anim"
+        android:layout_marginTop="180dp"
         android:layout_centerHorizontal="true"
         android:translationY="100dp"
         >
@@ -67,36 +67,37 @@
         android:layout_height="wrap_content">
     </TextView>
 
- <LinearLayout
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:orientation="horizontal"
-     android:layout_alignParentBottom="true"
-     android:layout_centerInParent="true"
-     android:translationY="-50dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:translationY="-50dp">
 
-    <ImageView
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        app:tint="@color/white"
-        android:src="@drawable/metabolism"
-        android:translationX="5dp"
-        android:background="@drawable/rounded_button">
-    </ImageView>
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:tint="@color/white"
+            android:src="@drawable/metabolism"
+            android:translationX="-275dp"
+            android:translationY="6dp"
 
-     <ImageView
-         android:layout_width="70dp"
-         android:layout_height="70dp"
-         app:tint="@color/white"
-         android:src="@drawable/kilometer"
-         android:background="@drawable/rounded_button"
-         android:layout_marginLeft="100dp"
-         android:layout_marginRight="20dp"
-         android:translationX="20dp"
-   >
-     </ImageView>
+            >
+        </ImageView>
 
- </LinearLayout>
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:tint="@color/white"
+            android:src="@drawable/kilometer"
+            android:translationX="-10dp"
+            android:translationY="6dp"
+            >
+        </ImageView>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -128,7 +129,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
@@ -139,7 +140,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Calories"
-            android:translationX="11dp"
+            android:translationX="-285dp"
             android:translationY="-5dp"
             android:textColor="@color/white">
 
@@ -151,9 +152,39 @@
             android:text="Kilometer"
             android:textColor="@color/white"
             android:translationY="-5dp"
-            android:layout_marginLeft="145dp">
+            android:translationX="-35dp"
+           >
 
         </TextView>
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_button_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="430dp"
+        android:layout_marginLeft="290dp"
+        android:backgroundTint="@color/red"
+        android:translationX="-180dp"
+        android:translationY="80dp"
+        android:src="@drawable/ic_baseline_play_arrow_24"
+        >
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_button_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="430dp"
+        android:layout_marginLeft="290dp"
+        android:backgroundTint="@color/red"
+        android:translationX="-180dp"
+        android:translationY="80dp"
+        android:visibility="gone"
+        android:src="@drawable/ic_baseline_stop_24"
+        >
+
+    </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </RelativeLayout>
