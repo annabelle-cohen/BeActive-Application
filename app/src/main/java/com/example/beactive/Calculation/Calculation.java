@@ -1,22 +1,25 @@
 package com.example.beactive.Calculation;
 
-public class Calculation {
+import java.io.Serializable;
+
+public class Calculation implements Serializable {
     public static final double CALORIE_PER_STEP=0.04;
     public static final double KILOMETER_PER_STEP=0.0003048;
     private double caloriesAccordingSteps=0;
     private double kilometersAccordingSteps=0;
+    private int steps=0;
 
     public Calculation(double caloriesAccordingSteps,double kilometersAccordingSteps) {
         this.caloriesAccordingSteps = caloriesAccordingSteps;
         this.kilometersAccordingSteps = kilometersAccordingSteps;
     }
 
-    public double calculateCalories(int steps){
+    public double calculateCalories(){
         caloriesAccordingSteps = steps*CALORIE_PER_STEP;
         return caloriesAccordingSteps;
     }
 
-    public double calculateKilometers(int steps){
+    public double calculateKilometers(){
         kilometersAccordingSteps = steps*KILOMETER_PER_STEP;
         return kilometersAccordingSteps;
     }
@@ -35,5 +38,13 @@ public class Calculation {
 
     public void setKilometersAccordingSteps(double kilometersAccordingSteps) {
         this.kilometersAccordingSteps = kilometersAccordingSteps;
+    }
+
+    public int getSteps() {
+        return steps;
+    }
+
+    public void setSteps(int steps) {
+        this.steps = steps;
     }
 }

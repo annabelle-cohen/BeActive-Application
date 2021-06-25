@@ -16,18 +16,25 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.IBinder;
+import android.os.PowerManager;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.example.beactive.BeActiveMainActivity;
+import com.example.beactive.BeActiveSecondActivity;
 import com.example.beactive.Calculation.Calculation;
+import com.example.beactive.Libraries.mySharedPref;
 import com.example.beactive.R;
 
 public class Service_StepCounter extends Service implements SensorEventListener {
+
+    public static final String BROADCAST_NEW_STEPS_DETECTED = "com.example.beactive.NEW_STEPS_DETECTED";
+    public static final String EXTRA_STEPS = "EXTRA_STEPS";
     public static final String START_FOREGROUND_SERVICE = "START_FOREGROUND_SERVICE";
     public static final String STOP_FOREGROUND_SERVICE = "STOP_FOREGROUND_SERVICE";
     public static final String PAUSE_FOREGROUND_SERVICE = "PAUSE_FOREGROUND_SERVICE";
@@ -45,6 +52,8 @@ public class Service_StepCounter extends Service implements SensorEventListener 
     private Sensor sensor;
     private int stepCounter = 0;
     private Calculation calculation;
+    private mySharedPref mySharedPref;
+
 
 
 
@@ -96,7 +105,7 @@ public class Service_StepCounter extends Service implements SensorEventListener 
 
     private void notifyUserForForgroundService() {
         Log.e("err","in notify user");
-        Intent notificationIntent = new Intent(this, BeActiveMainActivity.class);
+        Intent notificationIntent = new Intent(this, BeActiveSecondActivity.class);
         notificationIntent.setAction(MAIN_ACTION);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         pendingIntent = PendingIntent.getActivity(this,NOTIFICATION_ID,notificationIntent,PendingIntent.FLAG_UPDATE_CURRENT);
@@ -107,8 +116,8 @@ public class Service_StepCounter extends Service implements SensorEventListener 
                 .setOngoing(true)
                 .setSmallIcon(R.drawable.ic_baseline_directions_run_24)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher_round))
-                .setContentTitle("Steps:"+stepCounter+"Calories: "+calculation.getCaloriesAccordingSteps()+"Kilometers: "+calculation.getKilometersAccordingSteps())
-                .setContentText("--");
+                .setContentTitle("BeActive")
+                .setContentText("Steps:"+stepCounter+" Calories: "+String.format("%.3f",calculation.getCaloriesAccordingSteps())+" Kilometers: "+String.format("%.3f",calculation.getKilometersAccordingSteps()));
 
         Notification notification = notificationBuilder.build();
 
@@ -128,29 +137,13 @@ public class Service_StepCounter extends Service implements SensorEventListener 
     }
     private void editNotification(){
 
-
-        notificationBuilder.setContentIntent(pendingIntent)
-                .setOngoing(true)
-                .setSmallIcon(R.drawable.ic_baseline_directions_run_24)
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher_round))
-                .setContentTitle("Steps:"+stepCounter+"Calories: "+calculation.getCaloriesAccordingSteps()+"Kilometers: "+calculation.getKilometersAccordingSteps())
-                .setContentText("--");
-
-        Notification notification = notificationBuilder.build();
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            startForeground(NOTIFICATION_ID,notification,ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
-        }else{
-            startForeground(NOTIFICATION_ID,notification);
-        }
-
-        if(NOTIFICATION_ID != lastShowNotification){
-            final NotificationManager notificationManager = (NotificationManager)getSystemService(Service.NOTIFICATION_SERVICE);
-            notificationManager.cancel(lastShowNotification);
-        }
-
-        lastShowNotification = NOTIFICATION_ID;
+        notificationBuilder.
+                setContentText("Steps:"+stepCounter+"Calories: "+String.format("%.3f",calculation.getCaloriesAccordingSteps())+"Kilometers: "+String.format("%.3f",calculation.getKilometersAccordingSteps()));
+        final NotificationManager notificationManager = (NotificationManager)getSystemService(Service.NOTIFICATION_SERVICE);
+        notificationManager.notify(NOTIFICATION_ID,notificationBuilder.build());
+        mySharedPref.putInt("Steps",calculation.getSteps());
     }
+
     private NotificationCompat.Builder getNotificationBuilder(Context context, String channelId, int importanceLow) {
 
         NotificationCompat.Builder builder;
@@ -192,11 +185,13 @@ public class Service_StepCounter extends Service implements SensorEventListener 
         sensorManager.unregisterListener(this);
         sensorManager=null;
         sensor=null;
+        mySharedPref.putInt("Steps",0);
     }
 
     private void startPedometer() {
-        Log.e("err","in start service");
+
         sensorManager = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
+        mySharedPref = new mySharedPref(this);
 
         if(sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR)!=null){
             sensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_DETECTOR);
@@ -215,24 +210,29 @@ public class Service_StepCounter extends Service implements SensorEventListener 
         if(sensorEvent.sensor == sensor){
             if(isFixation){
                 stepCounter = (int) sensorEvent.values[0];
-                calculation.calculateCalories(stepCounter);
-                calculation.calculateKilometers(stepCounter);
+                calculation.setSteps(stepCounter);
+                calculation.calculateCalories();
+                calculation.calculateKilometers();
                 isFixation=false;
             }else{
                 stepCounter++;
-                calculation.calculateCalories(stepCounter);
-                calculation.calculateKilometers(stepCounter);
+                calculation.setSteps(stepCounter);
+                calculation.calculateCalories();
+                calculation.calculateKilometers();
                 Log.e("step count: ",stepCounter+" ");
                 editNotification();
             }
-
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(EXTRA_STEPS, calculation);
+            Intent intent = new Intent(BROADCAST_NEW_STEPS_DETECTED);
+            intent.putExtras(bundle);
+            LocalBroadcastManager.getInstance(Service_StepCounter.this).sendBroadcast(intent);
         }
 
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
-
     }
 
 }

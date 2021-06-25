@@ -20,12 +20,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BeActiveSecondActivity"  android:theme="@style/HideActionBar">
+        <activity android:name=".BeActiveSecondActivity"  android:theme="@style/HideActionBar" android:launchMode="singleTop">
         </activity>
 
         <service android:name=".Services.Service_StepCounter"
             android:enabled="true"
-            android:exported="false">
+            android:exported="false"
+              >
 
         </service>
     </application>

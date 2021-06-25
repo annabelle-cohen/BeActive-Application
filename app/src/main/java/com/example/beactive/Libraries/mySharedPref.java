@@ -44,6 +44,25 @@ public class mySharedPref {
         editor.apply();
     }
 
+    public void putBool(String key,boolean defaultValue){
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean(key,defaultValue);
+        editor.apply();
+    }
+
+    public Boolean getBoolean(String key,boolean defaultValue){
+        return prefs.getBoolean(key,defaultValue);
+    }
+
+    public void putDouble(String key,double defaultValue){
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putLong(key,Double.doubleToRawLongBits(defaultValue));
+        editor.apply();
+    }
+
+    public float getDouble(String key, double defaultValue){
+        return prefs.getLong(key,Double.doubleToLongBits(defaultValue));
+    }
     public void removeKey(String key) {
         prefs.edit().remove(key);
     }
