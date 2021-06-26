@@ -11,6 +11,17 @@
     <color name="gray">#B3B1B1</color>
     <color name="blue">#0470C6</color>
     <color name="red">#F82212</color>
+    <color name="color_background">#CCFDFBFB</color>
+    <color name="selectedIconColor">#00ACBD</color>
+    <color name="defaultIconColor">#CCFDFBFB</color>
+    <color name="shadowColor">#2E2E2E</color>
 
 
+    /----------color for ring app------------------
+    <color name="pink">#F61AE0</color>
+    <color name="green">#0BF415</color>
+    <color name="purple">#7209F3</color>
+    <color name="yellow">#FBE836</color>
+    <color name="orange">#FF9F10</color>
+    <color name="blue2">#3AC1FD</color>
 </resources>

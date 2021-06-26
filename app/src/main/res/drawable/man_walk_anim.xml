@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" android:oneshot="false">
+    <item android:drawable="@drawable/walking_male_00" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_01" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_02" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_03" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_04" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_05" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_06" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_07" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_08" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_09" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_10" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_11" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_12" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_13" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_14" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_15" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_16" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_17" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_18" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_19" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_20" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_21" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_22" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_23" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_24" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_25" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_26" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_27" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_28" android:duration="80"/>
+    <item android:drawable="@drawable/walking_male_29" android:duration="80"/>
+</animation-list>
