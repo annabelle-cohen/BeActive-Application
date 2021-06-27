@@ -68,14 +68,12 @@ public class Service_StepCounter extends Service implements SensorEventListener 
         Log.d("pttt","onStartCommand: "+(intent == null));
         if(intent == null){
             stopForeground(true);
-            Log.e("err","in first if not sticky");
             return START_NOT_STICKY;
 
         }
 
         if(intent.getAction().equals(START_FOREGROUND_SERVICE)){
             if(isServiceRunningRightNow){
-                Log.e("err","in second if start sticky");
                 return START_STICKY;
             }
 
@@ -104,7 +102,6 @@ public class Service_StepCounter extends Service implements SensorEventListener 
     }
 
     private void notifyUserForForgroundService() {
-        Log.e("err","in notify user");
         Intent notificationIntent = new Intent(this, BeActiveSecondActivity.class);
         notificationIntent.setAction(MAIN_ACTION);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -116,8 +113,9 @@ public class Service_StepCounter extends Service implements SensorEventListener 
                 .setOngoing(true)
                 .setSmallIcon(R.drawable.ic_baseline_directions_run_24)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher_round))
-                .setContentTitle("BeActive")
-                .setContentText("Steps:"+stepCounter+" Calories: "+String.format("%.3f",calculation.getCaloriesAccordingSteps())+" Kilometers: "+String.format("%.3f",calculation.getKilometersAccordingSteps()));
+                .setContentTitle(getString(R.string.app_name))
+                .setContentText(getString(R.string.defaultStepsText)+": "+stepCounter+" "+getString(R.string.defaultCalories)+": "+String.format("%.3f",calculation.getCaloriesAccordingSteps())+" "+getString(R.string.defaultKilometer)+": "+String.format("%.3f",calculation.getKilometersAccordingSteps()));
+
 
         Notification notification = notificationBuilder.build();
 
@@ -138,10 +136,10 @@ public class Service_StepCounter extends Service implements SensorEventListener 
     private void editNotification(){
 
         notificationBuilder.
-                setContentText("Steps:"+stepCounter+"Calories: "+String.format("%.3f",calculation.getCaloriesAccordingSteps())+"Kilometers: "+String.format("%.3f",calculation.getKilometersAccordingSteps()));
+                setContentText(getString(R.string.defaultStepsText)+": "+stepCounter+" "+getString(R.string.defaultCalories)+": "+String.format("%.3f",calculation.getCaloriesAccordingSteps())+" "+getString(R.string.defaultKilometer)+": "+String.format("%.3f",calculation.getKilometersAccordingSteps()));
         final NotificationManager notificationManager = (NotificationManager)getSystemService(Service.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID,notificationBuilder.build());
-        mySharedPref.putInt("Steps",calculation.getSteps());
+        mySharedPref.putInt(getString(R.string.defaultStepsText),calculation.getSteps());
     }
 
     private NotificationCompat.Builder getNotificationBuilder(Context context, String channelId, int importanceLow) {
@@ -185,7 +183,7 @@ public class Service_StepCounter extends Service implements SensorEventListener 
         sensorManager.unregisterListener(this);
         sensorManager=null;
         sensor=null;
-        mySharedPref.putInt("Steps",0);
+        mySharedPref.putInt(getString(R.string.defaultStepsText),0);
     }
 
     private void startPedometer() {
@@ -219,7 +217,6 @@ public class Service_StepCounter extends Service implements SensorEventListener 
                 calculation.setSteps(stepCounter);
                 calculation.calculateCalories();
                 calculation.calculateKilometers();
-                Log.e("step count: ",stepCounter+" ");
                 editNotification();
             }
             Bundle bundle = new Bundle();

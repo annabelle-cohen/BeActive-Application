@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.fragment.app.Fragment;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -22,6 +20,7 @@ public class CustomDialog extends AppCompatDialogFragment {
 
     public interface CustomDialogListener {
         void applyTexts(String choice);
+        void cancelApply();
     }
 
     private CustomDialogListener listener;
@@ -38,19 +37,27 @@ public class CustomDialog extends AppCompatDialogFragment {
         btnMale = view.findViewById(R.id.btn_male);
 
         builder.setView(view)
-                .setTitle("Gender");
+                .setTitle(getString(R.string.dialogTitle)).
+                setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                listener.cancelApply();
+            }
+        });
+
 
         btnFemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.applyTexts("Female");
+                listener.applyTexts(getString(R.string.genderFemale));
             }
         });
 
         btnMale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.applyTexts("Male");
+                listener.applyTexts(getString(R.string.genderMale));
             }
         });
 
@@ -64,7 +71,7 @@ public class CustomDialog extends AppCompatDialogFragment {
             listener = (CustomDialogListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString() +
-                    "must implement CustomDialogListener");
+                    getString(R.string.listener));
         }
     }
 }

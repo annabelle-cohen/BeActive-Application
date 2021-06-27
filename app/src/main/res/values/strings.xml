@@ -2,4 +2,40 @@
     <string name="app_name">BeActive</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="switchCase">case</string>
+
+    /----------color for ring app------------------
+    <string name="pink">#F61AE0</string>
+    <string name="green">#0BF415</string>
+    <string name="purple">#7209F3</string>
+    <string name="yellow">#FBE836</string>
+    <string name="orange">#FF9F10</string>
+    <string name="blue2">#3AC1FD</string>
+
+    /---------init --------------------------------
+    <string name="initCalories">0.00 kcal</string>
+    <string name="initKilometers">0.00 km</string>
+
+    /---------Icon Gender--------------------------
+    <string name="genderMale">Male</string>
+    <string name="genderFemale">Female</string>
+
+    /--------Default BeActive text-----------------
+    <string name="defaultStepsText">Steps</string>
+    <string name="defaultCalories">Calories</string>
+    <string name="defaultKilometer">Kilometer</string>
+
+    /--------Custom Dialog-------------------------
+    <string name="selectGenderTitle">Select Gender</string>
+    <string name="listener">must implement CustomDialogListener</string>
+    <string name="dialogTitle">Gender</string>
+    <string name="cancel">Cancel</string>
+
+    /---------Permission-----------------------------
+    <string name="permissionTitle">Permission needed</string>
+    <string name="permissionMessage">This permission is needed because of this and that</string>
+    <string name="permission">Permission:</string>
+    <string name="permissionIsGranted">you have already granted this permission!</string>
+    <string name="permissionGranted">Permission GRANTED</string>
+    <string name="permissionDenied">Permission DENIED</string>
 </resources>

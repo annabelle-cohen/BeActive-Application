@@ -44,7 +44,7 @@
 <TextView
     android:id="@+id/text_progress_steps"
     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-    android:text="Steps"
+    android:text="@string/defaultStepsText"
     android:layout_centerHorizontal="true"
     android:layout_centerVertical="true"
     android:textColor="@color/white"
@@ -58,7 +58,7 @@
     <TextView
         android:id="@+id/text_progress_"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:text="Steps"
+        android:text="@string/defaultStepsText"
         android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
@@ -141,7 +141,7 @@
             android:id="@+id/calories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calories"
+            android:text="@string/defaultCalories"
             android:translationX="-280dp"
             android:translationY="-5dp"
             android:textColor="@color/white">
@@ -151,7 +151,7 @@
             android:id="@+id/kilometers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kilometer"
+            android:text="@string/defaultKilometer"
             android:textColor="@color/white"
             android:translationY="-5dp"
             android:translationX="-35dp"

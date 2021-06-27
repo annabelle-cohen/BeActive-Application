@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 public class BeActiveMainActivity extends AppCompatActivity {
@@ -22,7 +23,7 @@ public class BeActiveMainActivity extends AppCompatActivity {
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACTIVITY_RECOGNITION)
                 != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(BeActiveMainActivity.this,"you have already granted this permmission!",Toast.LENGTH_LONG).show();
+            Log.e(getString(R.string.permission),getString(R.string.permissionIsGranted));
         }else{
             requestRecognitionPermission();
         }
@@ -34,8 +35,8 @@ public class BeActiveMainActivity extends AppCompatActivity {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.ACTIVITY_RECOGNITION)) {
             new AlertDialog.Builder(this)
-                    .setTitle("Permission needed")
-                    .setMessage("This permission is needed because of this and that")
+                    .setTitle(getString(R.string.permissionTitle))
+                    .setMessage(getString(R.string.permissionMessage))
                     .setPositiveButton("ok", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -60,9 +61,9 @@ public class BeActiveMainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == ACTIVITY_RECOGNITION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "Permission GRANTED", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.permissionGranted), Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.permissionDenied), Toast.LENGTH_SHORT).show();
             }
         }
     }

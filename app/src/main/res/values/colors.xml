@@ -17,11 +17,4 @@
     <color name="shadowColor">#2E2E2E</color>
 
 
-    /----------color for ring app------------------
-    <color name="pink">#F61AE0</color>
-    <color name="green">#0BF415</color>
-    <color name="purple">#7209F3</color>
-    <color name="yellow">#FBE836</color>
-    <color name="orange">#FF9F10</color>
-    <color name="blue2">#3AC1FD</color>
 </resources>
